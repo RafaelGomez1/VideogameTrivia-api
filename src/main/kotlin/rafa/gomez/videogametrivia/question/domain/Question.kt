@@ -1,6 +1,7 @@
-package rafa.gomez.videogametrivia.challenge.domain
+package rafa.gomez.videogametrivia.question.domain
 
 import java.util.UUID
+import rafa.gomez.videogametrivia.challenge.domain.Category
 
 data class Question(
     val id: QuestionId,

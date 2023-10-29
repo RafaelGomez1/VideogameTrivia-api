@@ -1,14 +1,14 @@
-package rafa.gomez.videogametrivia.challenge.secondaryadapter.gpt
+package rafa.gomez.videogametrivia.question.secondaryadapter.gpt
 
 import java.util.UUID
 import rafa.gomez.videogametrivia.challenge.domain.Category
-import rafa.gomez.videogametrivia.challenge.domain.Choice
-import rafa.gomez.videogametrivia.challenge.domain.CorrectAnswer
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty.Undertermined
-import rafa.gomez.videogametrivia.challenge.domain.Question
-import rafa.gomez.videogametrivia.challenge.domain.QuestionId
-import rafa.gomez.videogametrivia.challenge.domain.Statement
+import rafa.gomez.videogametrivia.question.domain.Choice
+import rafa.gomez.videogametrivia.question.domain.CorrectAnswer
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.Difficulty.Undertermined
+import rafa.gomez.videogametrivia.question.domain.Question
+import rafa.gomez.videogametrivia.question.domain.QuestionId
+import rafa.gomez.videogametrivia.question.domain.Statement
 
 class QuestionInterpreter {
 

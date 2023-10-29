@@ -1,5 +1,8 @@
 package rafa.gomez.videogametrivia.challenge.domain
 
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.Question
+
 data class Challenge private constructor(
     val category: Category,
     val questions: List<Question>,

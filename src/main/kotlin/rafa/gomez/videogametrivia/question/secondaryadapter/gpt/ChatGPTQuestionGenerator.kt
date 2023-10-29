@@ -1,12 +1,11 @@
-package rafa.gomez.videogametrivia.challenge.secondaryadapter.gpt
+package rafa.gomez.videogametrivia.question.secondaryadapter.gpt
 
 import io.github.flashvayne.chatgpt.service.ChatgptService
-import java.util.regex.Pattern
 import org.springframework.stereotype.Component
 import rafa.gomez.videogametrivia.challenge.domain.Category
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
-import rafa.gomez.videogametrivia.challenge.domain.Question
-import rafa.gomez.videogametrivia.challenge.domain.QuestionGenerator
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.Question
+import rafa.gomez.videogametrivia.question.domain.QuestionGenerator
 
 @Component
 class ChatGPTQuestionGenerator(private val gpt: ChatgptService) : QuestionGenerator {
@@ -30,7 +29,7 @@ class ChatGPTQuestionGenerator(private val gpt: ChatgptService) : QuestionGenera
 
         private const val prompt = "I want to create a daily videogame challenge/trivia app that provides a question from videogame history (characters, easter eggs, whatever) every day to the end users. Create $numberPattern examples of questions with 4 possible answers and tell me the valid answer and difficulty should be $difficultyPattern. Questions must follow the topic of $topicPattern and must be from 1990 to present day.In order to identify it add the name of the topic at the beginning of the whole response like 'topic: $topicPattern' but avoid adding the timeline in the response. Also add the difficulty level for every question as difficulty: after the question's answer." +
                 "Follow this example as a pattern:\n " +
-                "Topic: ${topicPattern}\n" +
+                "Topic: $topicPattern\n" +
                 "Q: In which Splatoon 2 game mode do players attempt to capture and control points on a map?\n" +
                 "\n" +
                 "A. Tower Control\n" +

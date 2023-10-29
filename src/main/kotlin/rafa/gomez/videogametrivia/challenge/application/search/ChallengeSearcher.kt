@@ -2,9 +2,9 @@ package rafa.gomez.videogametrivia.challenge.application.search
 
 import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.challenge.domain.Challenge
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
-import rafa.gomez.videogametrivia.challenge.domain.QuestionRepository
-import rafa.gomez.videogametrivia.challenge.domain.SearchQuestionCriteria.ByCategoryAndDifficulty
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.QuestionRepository
+import rafa.gomez.videogametrivia.question.domain.SearchQuestionCriteria.ByCategoryAndDifficulty
 
 class ChallengeSearcher(private val repository: QuestionRepository) {
 

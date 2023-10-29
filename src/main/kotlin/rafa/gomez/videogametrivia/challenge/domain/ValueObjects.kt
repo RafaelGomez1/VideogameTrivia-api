@@ -16,8 +16,7 @@ enum class Category {
     DEVELOPMENT_STUDIOS,
     MECHANICS,
     FUN_FACTS,
-    NO_CATEGORY
-    ;
+    NO_CATEGORY;
 
     fun toModel(): String = name.replace("_", " ").lowercase()
 

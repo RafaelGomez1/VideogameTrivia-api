@@ -4,9 +4,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import rafa.gomez.videogametrivia.challenge.PromptResponseMother
-import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.challenge.domain.Category.LORE_AND_STORYLINES
-import rafa.gomez.videogametrivia.challenge.secondaryadapter.gpt.QuestionInterpreter
+import rafa.gomez.videogametrivia.question.secondaryadapter.gpt.QuestionInterpreter
 
 class QuestionInterpreterTest {
 

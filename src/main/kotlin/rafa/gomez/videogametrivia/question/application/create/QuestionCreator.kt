@@ -1,10 +1,10 @@
-package rafa.gomez.videogametrivia.challenge.application.create
+package rafa.gomez.videogametrivia.question.application.create
 
 import org.springframework.stereotype.Component
 import rafa.gomez.videogametrivia.challenge.domain.Category
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
-import rafa.gomez.videogametrivia.challenge.domain.QuestionGenerator
-import rafa.gomez.videogametrivia.challenge.domain.QuestionRepository
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.QuestionGenerator
+import rafa.gomez.videogametrivia.question.domain.QuestionRepository
 
 @Component
 class QuestionCreator(

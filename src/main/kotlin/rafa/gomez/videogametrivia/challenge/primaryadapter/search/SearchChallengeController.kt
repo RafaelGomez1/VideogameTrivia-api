@@ -2,7 +2,6 @@ package rafa.gomez.videogametrivia.challenge.primaryadapter.search
 
 import arrow.core.raise.fold
 import kotlinx.coroutines.runBlocking
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,7 +12,6 @@ import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeEr
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeError.InvalidDifficulty
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeQuery
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeQueryHandler
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
 import rafa.gomez.videogametrivia.shared.BaseController
 import rafa.gomez.videogametrivia.shared.response.Response
 

@@ -1,16 +1,16 @@
-package rafa.gomez.videogametrivia.challenge.secondaryadapter.database
+package rafa.gomez.videogametrivia.question.secondaryadapter.database
 
 import java.util.UUID
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.challenge.domain.Category.NO_CATEGORY
-import rafa.gomez.videogametrivia.challenge.domain.Choice
-import rafa.gomez.videogametrivia.challenge.domain.CorrectAnswer
-import rafa.gomez.videogametrivia.challenge.domain.Difficulty
-import rafa.gomez.videogametrivia.challenge.domain.Question
-import rafa.gomez.videogametrivia.challenge.domain.QuestionId
-import rafa.gomez.videogametrivia.challenge.domain.Statement
+import rafa.gomez.videogametrivia.question.domain.Choice
+import rafa.gomez.videogametrivia.question.domain.CorrectAnswer
+import rafa.gomez.videogametrivia.question.domain.Difficulty
+import rafa.gomez.videogametrivia.question.domain.Question
+import rafa.gomez.videogametrivia.question.domain.QuestionId
+import rafa.gomez.videogametrivia.question.domain.Statement
 
 @Document(collection = "Questions")
 data class QuestionDocument(

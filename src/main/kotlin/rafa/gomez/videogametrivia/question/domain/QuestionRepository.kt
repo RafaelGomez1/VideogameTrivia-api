@@ -1,6 +1,7 @@
-package rafa.gomez.videogametrivia.challenge.domain
+package rafa.gomez.videogametrivia.question.domain
 
 import arrow.core.raise.Raise
+import rafa.gomez.videogametrivia.challenge.domain.Category
 
 interface QuestionRepository {
 

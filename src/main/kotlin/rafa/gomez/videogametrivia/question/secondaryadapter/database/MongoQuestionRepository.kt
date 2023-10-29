@@ -1,17 +1,16 @@
-package rafa.gomez.videogametrivia.challenge.secondaryadapter.database
+package rafa.gomez.videogametrivia.question.secondaryadapter.database
 
-import java.util.UUID
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
-import rafa.gomez.videogametrivia.challenge.domain.FindQuestionCriteria
-import rafa.gomez.videogametrivia.challenge.domain.FindQuestionCriteria.ById
-import rafa.gomez.videogametrivia.challenge.domain.Question
-import rafa.gomez.videogametrivia.challenge.domain.QuestionRepository
-import rafa.gomez.videogametrivia.challenge.domain.SearchQuestionCriteria
-import rafa.gomez.videogametrivia.challenge.domain.SearchQuestionCriteria.ByCategory
-import rafa.gomez.videogametrivia.challenge.domain.SearchQuestionCriteria.ByCategoryAndDifficulty
+import rafa.gomez.videogametrivia.question.domain.FindQuestionCriteria
+import rafa.gomez.videogametrivia.question.domain.FindQuestionCriteria.ById
+import rafa.gomez.videogametrivia.question.domain.Question
+import rafa.gomez.videogametrivia.question.domain.QuestionRepository
+import rafa.gomez.videogametrivia.question.domain.SearchQuestionCriteria
+import rafa.gomez.videogametrivia.question.domain.SearchQuestionCriteria.ByCategory
+import rafa.gomez.videogametrivia.question.domain.SearchQuestionCriteria.ByCategoryAndDifficulty
 
 
 @Repository
