@@ -5,6 +5,7 @@ import rafa.gomez.videogametrivia.challenge.domain.Challenge
 import rafa.gomez.videogametrivia.question.domain.Difficulty
 import rafa.gomez.videogametrivia.question.domain.QuestionRepository
 import rafa.gomez.videogametrivia.question.domain.SearchQuestionCriteria.ByCategoryAndDifficulty
+import rafa.gomez.videogametrivia.question.domain.findOrElse
 
 class ChallengeSearcher(private val repository: QuestionRepository) {
 
