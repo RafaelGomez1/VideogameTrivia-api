@@ -17,6 +17,9 @@ import rafa.gomez.videogametrivia.question.secondaryadapter.database.toDocument
 interface JpaChallengeRepository : MongoRepository<ChallengeDocument, String> {
     fun findAllByCategory(category: String): List<ChallengeDocument>
     fun findAllByCategoryAndDifficulty(category: String, difficulty: String): List<ChallengeDocument>
+
+    fun findByCategory(category: String): ChallengeDocument?
+    fun findByCategoryAndDifficulty(category: String, difficulty: String): ChallengeDocument?
 }
 
 @Document(collection = "Challenges")

@@ -54,6 +54,9 @@ dependencies {
 
     // Coroutines Testing
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
+    // Konsist
+    testImplementation("com.lemonappdev:konsist:0.13.0")
 }
 
 tasks.withType<KotlinCompile> {
