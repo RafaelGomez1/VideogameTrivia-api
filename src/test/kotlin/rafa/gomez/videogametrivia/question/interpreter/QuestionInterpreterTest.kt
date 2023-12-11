@@ -1,4 +1,4 @@
-package rafa.gomez.videogametrivia.challenge.secondaryadapter.interpreter
+package rafa.gomez.videogametrivia.question.interpreter
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -10,7 +10,6 @@ import rafa.gomez.videogametrivia.question.secondaryadapter.gpt.QuestionInterpre
 class QuestionInterpreterTest {
 
     private val interpreter = QuestionInterpreter()
-
 
     @Test
     fun `should return a list of questions based on the response from chat gpt`() {

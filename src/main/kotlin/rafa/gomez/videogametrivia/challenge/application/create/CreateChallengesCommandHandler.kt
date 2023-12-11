@@ -13,10 +13,10 @@ class CreateChallengesCommandHandler(
     questionRepository: QuestionRepository
 ) {
 
-    private val creator = ChallengesCreator(repository, questionRepository)
+    private val createChallenges = ChallengesCreator(repository, questionRepository)
 
-    fun handle(command: CreateChallengesCommand) =
-        creator.invoke(listOf(CONSOLE_HISTORY, VIDEOGAME_HISTORY, LORE_AND_STORYLINES))
+    suspend fun handle(command: CreateChallengesCommand) =
+        createChallenges(listOf(CONSOLE_HISTORY, VIDEOGAME_HISTORY, LORE_AND_STORYLINES))
 }
 
 object CreateChallengesCommand

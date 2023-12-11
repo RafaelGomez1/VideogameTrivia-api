@@ -2,6 +2,7 @@ package rafa.gomez.videogametrivia.question.domain
 
 import java.util.UUID
 import rafa.gomez.videogametrivia.challenge.domain.Category
+import rafa.gomez.videogametrivia.question.domain.Difficulty.Easy
 
 data class Question(
     val id: QuestionId,

@@ -17,7 +17,7 @@ import rafa.gomez.videogametrivia.question.domain.Difficulty.Medium
 @Component
 class CreateQuestionAutogenerator(private val creator: QuestionCreator) {
 
-    @EventListener(ApplicationReadyEvent::class)
+
     fun run() {
         runBlocking {
             launch {

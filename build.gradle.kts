@@ -33,6 +33,7 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
 
     // Spotless
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.9.0")

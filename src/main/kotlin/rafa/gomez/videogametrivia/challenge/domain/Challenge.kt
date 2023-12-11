@@ -13,12 +13,16 @@ data class Challenge(
     companion object {
         fun createMultiple(
             category: Category,
-            questions: List<Question>,
-            difficulty: Difficulty
-        ) =
-            questions.chunked(CHALLENGE_QUESTIONS_AMOUNT)
-                .filter { it.size == CHALLENGE_QUESTIONS_AMOUNT }
-                .map { Challenge(ChallengeId(UUID.randomUUID()), category, it, difficulty) }
+            questions: List<Question>
+        ): List<Challenge> =
+            questions
+                .groupBy { it.difficulty }
+                .flatMap { entry ->
+                    entry.value
+                         .chunked(CHALLENGE_QUESTIONS_AMOUNT)
+                         .filter { it.size == CHALLENGE_QUESTIONS_AMOUNT }
+                         .map { Challenge(ChallengeId(UUID.randomUUID()), category, it, entry.key) }
+                 }
 
         private const val CHALLENGE_QUESTIONS_AMOUNT = 10
     }
