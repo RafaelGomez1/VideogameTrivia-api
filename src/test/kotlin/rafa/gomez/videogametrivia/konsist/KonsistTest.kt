@@ -1,6 +1,9 @@
 package rafa.gomez.videogametrivia.konsist
 
 import com.lemonappdev.konsist.api.Konsist
+import com.lemonappdev.konsist.api.architecture.KoArchitectureCreator.assertArchitecture
+import com.lemonappdev.konsist.api.architecture.Layer
+import com.lemonappdev.konsist.api.declaration.KoClassDeclaration
 import com.lemonappdev.konsist.api.ext.list.functions
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withSealedModifier
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withValueModifier
@@ -85,6 +88,7 @@ class KonsistTest {
         Konsist
             .scopeFromPackage("..application..")
             .classes()
+            .filter { it.isNotCQRSClass() }
             .assertTrue {
                 val hasSingleInvokeOperatorMethod = it.hasFunction { function ->
                     function.name == "invoke" && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
@@ -128,5 +132,49 @@ class KonsistTest {
             .scopeFromProject()
             .packages
             .assertTrue { it.hasMatchingPath }
+    }
+
+    @Test
+    fun `domain ports must not use arrow`() {
+        Konsist
+            .scopeFromPackage("..domain..")
+            .interfaces()
+            .assertTrue { port ->
+                port.hasAllFunctions { function ->
+                    function.returnType?.hasNameContaining("Either<")?.not() ?: true
+                }
+            }
+    }
+
+    @Test
+    fun `hexagonal architecture layers have correct dependencies for challenge module`() {
+        Konsist
+            .scopeFromProduction()
+            .assertArchitecture {
+                // Define layers
+                val domain = Layer("Domain", "rafa.gomez.videogametrivia.challenge.domain..")
+                val application = Layer("Application", "rafa.gomez.videogametrivia.challenge.application..")
+                val primaryAdapter = Layer("PrimaryAdapter", "rafa.gomez.videogametrivia.challenge.primaryadapter..")
+                val secondaryAdapter = Layer("SecondaryAdapter", "rafa.gomez.videogametrivia.challenge.secondaryadapter..")
+
+                // Can not use things from anywhere else
+                domain.dependsOnNothing()
+
+                // Can use concepts from domain
+                application.dependsOn(domain)
+                secondaryAdapter.dependsOn(domain)
+
+                // Can use concepts from domain and application
+                primaryAdapter.dependsOn(domain, application)
+            }
+    }
+
+    private fun KoClassDeclaration.isNotCQRSClass(): Boolean =
+        !name.contains(CQRS_SUFFIX) && !name.contains(COMMAND_SUFFIX) && !name.contains(QUERY_SUFFIX)
+
+    private companion object {
+        const val CQRS_SUFFIX = "Handler"
+        const val COMMAND_SUFFIX = "Command"
+        const val QUERY_SUFFIX = "Query"
     }
 }

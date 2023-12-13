@@ -2,14 +2,14 @@ package rafa.gomez.videogametrivia.challenge.secondaryadapter.database
 
 import org.springframework.data.repository.findByIdOrNull
 import rafa.gomez.videogametrivia.challenge.domain.Challenge
+import rafa.gomez.videogametrivia.challenge.domain.ChallengeRepository
+import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria
+import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria.ById
 import rafa.gomez.videogametrivia.challenge.domain.SearchChallengeCriteria
 import rafa.gomez.videogametrivia.challenge.domain.SearchChallengeCriteria.ByCategory
 import rafa.gomez.videogametrivia.challenge.domain.SearchChallengeCriteria.ByCategoryAndDifficulty
 import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria.ByCategory as FindByCategory
 import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria.ByCategoryAndDifficulty as FindByCategoryAndDifficulty
-import rafa.gomez.videogametrivia.challenge.domain.ChallengeRepository
-import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria
-import rafa.gomez.videogametrivia.challenge.domain.FindChallengeCriteria.ById
 
 class MongoChallengeRepository(private val repository: JpaChallengeRepository) : ChallengeRepository {
     override suspend fun find(criteria: FindChallengeCriteria): Challenge? =
