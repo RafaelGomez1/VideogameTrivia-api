@@ -4,8 +4,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.springframework.boot.context.event.ApplicationReadyEvent
-import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import rafa.gomez.videogametrivia.question.application.create.QuestionCreator
 import rafa.gomez.videogametrivia.challenge.domain.Category.DEVELOPMENT_STUDIOS
@@ -16,7 +14,6 @@ import rafa.gomez.videogametrivia.question.domain.Difficulty.Medium
 
 @Component
 class CreateQuestionAutogenerator(private val creator: QuestionCreator) {
-
 
     fun run() {
         runBlocking {

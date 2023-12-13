@@ -5,7 +5,7 @@ import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.question.domain.Choice
 import rafa.gomez.videogametrivia.question.domain.CorrectAnswer
 import rafa.gomez.videogametrivia.question.domain.Difficulty
-import rafa.gomez.videogametrivia.question.domain.Difficulty.Undertermined
+import rafa.gomez.videogametrivia.question.domain.Difficulty.Undetermined
 import rafa.gomez.videogametrivia.question.domain.Question
 import rafa.gomez.videogametrivia.question.domain.QuestionId
 import rafa.gomez.videogametrivia.question.domain.Statement
@@ -19,7 +19,7 @@ class QuestionInterpreter {
         var questionId = UUID.randomUUID()
         var statement = ""
         var topic = ""
-        var difficulty: Difficulty = Undertermined
+        var difficulty: Difficulty = Undetermined
         val choices = mutableListOf<Choice>()
         var correctAnswer = ""
 
@@ -52,7 +52,7 @@ class QuestionInterpreter {
                         statement = ""
                         choices.clear()
                         correctAnswer = ""
-                        difficulty = Undertermined
+                        difficulty = Undetermined
                     }
                     statement = line.substring(line.indexOf('.') + 3).trim()
                 }
@@ -72,7 +72,6 @@ class QuestionInterpreter {
             questions.add(question)
         }
 
-
         return questions.removeQuestionIfAnswerIsNotInChoices()
     }
 
@@ -82,7 +81,6 @@ class QuestionInterpreter {
                 question.choices
                     .map { choice -> choice.value.lowercase() }
                     .contains(question.correctAnswer.value.lowercase())
-
             }
             .also { println("Questions after filtering: $size") }
 }

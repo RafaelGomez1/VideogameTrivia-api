@@ -31,7 +31,7 @@ class SearchChallengeController(private val handler: SearchChallengeQueryHandler
     }
 
     private fun SearchChallengeError.toServerResponse(): Response<*> =
-        when(this) {
+        when (this) {
             InvalidCategory -> Response.status(BAD_REQUEST).body("Invalid Category")
             InvalidDifficulty -> Response.status(BAD_REQUEST).body("Invalid Difficulty")
         }

@@ -1,10 +1,8 @@
 package rafa.gomez.videogametrivia.shared.response
 
 import arrow.core.Either
-import arrow.core.left
 import rafa.gomez.videogametrivia.shared.error.ServerError
 import org.springframework.http.ResponseEntity
-import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeError
 
 inline fun <E, R> Either<E, R>.toServerResponse(
     onValidResponse: (R) -> ResponseEntity<*>,

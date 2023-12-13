@@ -1,13 +1,11 @@
 package rafa.gomez.videogametrivia.question.secondaryadapter.gpt
 
 import io.github.flashvayne.chatgpt.service.ChatgptService
-import org.springframework.stereotype.Component
 import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.question.domain.Difficulty
 import rafa.gomez.videogametrivia.question.domain.Question
 import rafa.gomez.videogametrivia.question.domain.QuestionGenerator
 
-@Component
 class ChatGPTQuestionGenerator(private val gpt: ChatgptService) : QuestionGenerator {
 
     private val interpreter = QuestionInterpreter()

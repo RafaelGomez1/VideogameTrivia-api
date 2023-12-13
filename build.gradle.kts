@@ -48,6 +48,9 @@ dependencies {
     // Password Encryption
     implementation("org.mindrot:jbcrypt:0.4")
 
+    // Event Bus
+    implementation("org.axonframework:axon-messaging:4.9.0")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")

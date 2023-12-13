@@ -18,7 +18,7 @@ class QuestionInterpreterTest {
 
         // Then
         assertEquals(4, response.size)
-        assertTrue { response.all { it.category == LORE_AND_STORYLINES} }
+        assertTrue { response.all { it.category == LORE_AND_STORYLINES } }
         assertEquals(4, response.random().choices.size)
     }
 
@@ -29,7 +29,7 @@ class QuestionInterpreterTest {
 
         // Then
         assertEquals(3, response.size)
-        assertTrue { response.all { it.category == LORE_AND_STORYLINES} }
+        assertTrue { response.all { it.category == LORE_AND_STORYLINES } }
         assertEquals(4, response.random().choices.size)
     }
 
@@ -40,7 +40,7 @@ class QuestionInterpreterTest {
 
         // Then
         assertEquals(4, response.size)
-        assertTrue { response.all { it.category == LORE_AND_STORYLINES} }
+        assertTrue { response.all { it.category == LORE_AND_STORYLINES } }
         assertEquals(4, response.random().choices.size)
     }
 
@@ -48,4 +48,3 @@ class QuestionInterpreterTest {
     private val topiclessResponse = PromptResponseMother.topicLessResponse()
     private val validResponse = PromptResponseMother.fullValidResponse()
 }
-

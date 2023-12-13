@@ -2,7 +2,6 @@ package rafa.gomez.videogametrivia.challenge
 
 object PromptResponseMother {
 
-
     fun answerDoesNotMatchChoice() =
         """
             Q: Who is the main character of Call of Duty: Modern Warfare?

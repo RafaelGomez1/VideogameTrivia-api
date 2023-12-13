@@ -15,10 +15,10 @@ suspend fun <Error> QuestionRepository.findOrElse(criteria: FindQuestionCriteria
     find(criteria) ?: raise(onError())
 
 sealed class FindQuestionCriteria {
-    class ById(val id: QuestionId): FindQuestionCriteria()
+    class ById(val id: QuestionId) : FindQuestionCriteria()
 }
 
 sealed class SearchQuestionCriteria {
-    class ByCategory(val category: Category): SearchQuestionCriteria()
-    class ByCategoryAndDifficulty(val category: Category, val difficulty: Difficulty): SearchQuestionCriteria()
+    class ByCategory(val category: Category) : SearchQuestionCriteria()
+    class ByCategoryAndDifficulty(val category: Category, val difficulty: Difficulty) : SearchQuestionCriteria()
 }

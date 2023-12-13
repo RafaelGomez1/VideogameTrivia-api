@@ -9,7 +9,7 @@ import rafa.gomez.videogametrivia.shared.BaseController
 import rafa.gomez.videogametrivia.shared.response.Response
 
 @RestController
-class CreateChallengeController(private val handler: CreateChallengesCommandHandler): BaseController() {
+class CreateChallengeController(private val handler: CreateChallengesCommandHandler) : BaseController() {
 
     @PostMapping("/challenges")
     fun create(): Response<Unit> = runBlocking {
