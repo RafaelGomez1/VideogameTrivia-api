@@ -32,6 +32,4 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
-            check 
-            -x jacocoTestCoverageVerification 
-            -x jacocoTestReport
+            check -x jacocoTestReport
