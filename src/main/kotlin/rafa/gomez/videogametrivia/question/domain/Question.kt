@@ -2,7 +2,6 @@ package rafa.gomez.videogametrivia.question.domain
 
 import java.util.UUID
 import rafa.gomez.videogametrivia.challenge.domain.Category
-import rafa.gomez.videogametrivia.question.domain.Difficulty.Easy
 
 data class Question(
     val id: QuestionId,
@@ -31,14 +30,14 @@ sealed class Difficulty {
     object Easy : Difficulty()
     object Medium : Difficulty()
     object Hard : Difficulty()
-    object Undertermined : Difficulty()
+    object Undetermined : Difficulty()
 
     fun name() =
-        when(this) {
+        when (this) {
             Easy -> "EASY"
             Medium -> "MEDIUM"
             Hard -> "HARD"
-            Undertermined -> "UNDETERMINED"
+            Undetermined -> "UNDETERMINED"
         }
     companion object {
         fun fromString(value: String): Difficulty? =
@@ -52,5 +51,4 @@ sealed class Difficulty {
                 else -> null
             }
     }
-
 }

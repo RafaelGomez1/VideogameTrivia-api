@@ -9,5 +9,4 @@ class VideogameTriviaApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

@@ -34,5 +34,3 @@ internal fun Challenge.toDto(): ChallengeDTO =
         },
         difficulty = difficulty.name()
     )
-
-

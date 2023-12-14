@@ -29,7 +29,7 @@ data class QuestionDocument(
         choices = choices.map { Choice(it) },
         correctAnswer = CorrectAnswer(correctAnswer),
         category = Category.fromString(category) ?: NO_CATEGORY,
-        difficulty = Difficulty.fromString(difficulty) ?: Difficulty.Undertermined
+        difficulty = Difficulty.fromString(difficulty) ?: Difficulty.Undetermined
     )
 }
 
