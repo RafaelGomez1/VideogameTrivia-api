@@ -27,7 +27,7 @@ class ChallengeSolver(
     }
 }
 
-sealed interface SolveChallengeError {
-    object NotFound : SolveChallengeError
-    object ChallengeFailed : SolveChallengeError
+sealed class SolveChallengeError {
+    object NotFound : SolveChallengeError()
+    object ChallengeFailed : SolveChallengeError()
 }

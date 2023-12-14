@@ -6,7 +6,11 @@ import com.lemonappdev.konsist.api.architecture.Layer
 import com.lemonappdev.konsist.api.declaration.KoClassDeclaration
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withSealedModifier
 import com.lemonappdev.konsist.api.verify.assertTrue
+import java.util.stream.Stream
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestFactory
 import rafa.gomez.videogametrivia.SharedConcepts.APPLICATION_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.APPLICATION_SERVICE_METHOD_NAME
 import rafa.gomez.videogametrivia.SharedConcepts.COMMAND_SUFFIX
@@ -15,44 +19,70 @@ import rafa.gomez.videogametrivia.SharedConcepts.DOMAIN_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.EITHER_TYPE
 import rafa.gomez.videogametrivia.SharedConcepts.QUERY_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.SEALED_CLASS_ERROR_SUFFIX
+import rafa.gomez.videogametrivia.SharedConcepts.SEALED_CLASS_UNKNOWN_ERROR
+import rafa.gomez.videogametrivia.SharedConcepts.isApplicationService
 
 class ArchitectureTest {
 
-    @Test
-    fun `application services should have single 'public operator' method named 'invoke'`() {
+    @TestFactory
+    fun `application services should have single 'public operator' method named 'invoke'`(): Stream<DynamicTest> =
         Konsist
             .scopeFromPackage(APPLICATION_LAYER)
             .classes()
-            .filter { it.isNotCQRSClass() }
-            .assertTrue {
-                val hasSingleInvokeOperatorMethod = it.hasFunction { function ->
-                    function.name == APPLICATION_SERVICE_METHOD_NAME && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
-                }
+            .filter { it.isApplicationService() }
+            .stream()
+            .flatMap { applicationService ->
+                Stream.of(
+                    dynamicTest("${applicationService.name}'s name must have operator invoke function") {
+                        applicationService.assertTrue {
+                            it.hasFunction { function ->
+                                function.name == APPLICATION_SERVICE_METHOD_NAME && function.hasPublicOrDefaultModifier && function.hasOperatorModifier
+                            }
+                        }
+                    },
 
-                hasSingleInvokeOperatorMethod && it.countFunctions { item -> item.hasPublicOrDefaultModifier } == 1
+                    dynamicTest("${applicationService.name}'s must have only one public function") {
+                        applicationService.assertTrue { it.countFunctions { item -> item.hasPublicOrDefaultModifier } == 1 }
+                    }
+                )
             }
-    }
 
-    @Test
-    fun `every sealed class in application has surname 'error'`() {
+    @TestFactory
+    fun `every sealed class in application has suffix 'Error'`(): Stream<DynamicTest> =
         Konsist
             .scopeFromPackage(APPLICATION_LAYER)
             .classes()
             .withSealedModifier()
-            .assertTrue { SEALED_CLASS_ERROR_SUFFIX in it.name }
-    }
+            .stream()
+            .flatMap { useCaseError ->
+                Stream.of(
+                    dynamicTest("${useCaseError.name}'s name should end with Error") {
+                        useCaseError.assertTrue { SEALED_CLASS_ERROR_SUFFIX in useCaseError.name }
+                    },
 
-    @Test
-    fun `domain ports must not use arrow`() {
+                    dynamicTest("${useCaseError.name} should not have an Unknown error") {
+                        val doesNotHaveUnknownChildClass = !useCaseError.hasClass { it.hasNameContaining(SEALED_CLASS_UNKNOWN_ERROR) }
+                        val doesNotHaveUnknownChildObject = !useCaseError.hasObject { it.hasNameContaining(SEALED_CLASS_UNKNOWN_ERROR) }
+                        useCaseError.assertTrue { doesNotHaveUnknownChildClass && doesNotHaveUnknownChildObject}
+                    }
+                )
+            }
+
+    @TestFactory
+    fun `domain ports must not use arrow`(): Stream<DynamicTest> =
         Konsist
             .scopeFromPackage(DOMAIN_LAYER)
             .interfaces()
-            .assertTrue { port ->
-                port.hasAllFunctions { function ->
-                    function.returnType?.hasNameContaining(EITHER_TYPE)?.not() ?: true
-                }
+            .stream()
+            .flatMap { port ->
+                Stream.of(
+                    dynamicTest("${port.name} should not use arrow") {
+                        port.hasAllFunctions { function ->
+                            function.returnType?.hasNameContaining(EITHER_TYPE)?.not() ?: true
+                        }
+                    }
+                )
             }
-    }
 
     @Test
     fun `hexagonal architecture layers have correct dependencies for challenge module`() {
@@ -76,8 +106,5 @@ class ArchitectureTest {
                 primaryAdapter.dependsOn(domain, application)
             }
     }
-
-    private fun KoClassDeclaration.isNotCQRSClass(): Boolean =
-        !name.contains(CQRS_SUFFIX) && !name.contains(COMMAND_SUFFIX) && !name.contains(QUERY_SUFFIX)
 
 }

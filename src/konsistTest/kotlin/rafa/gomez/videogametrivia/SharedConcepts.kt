@@ -1,5 +1,7 @@
 package rafa.gomez.videogametrivia
 
+import com.lemonappdev.konsist.api.declaration.KoClassDeclaration
+
 object SharedConcepts {
 
     // CQRS Concepts
@@ -22,6 +24,16 @@ object SharedConcepts {
     const val EITHER_TYPE = "Either<"
     const val RESPONSE_TYPE = "Response<"
     const val VALUE_CLASS_PROPERTY_NAME = "value"
-    const val SEALED_CLASS_ERROR_SUFFIX = "Error"
     const val APPLICATION_SERVICE_METHOD_NAME = "invoke"
+
+    // Sealed Class Concepts
+    const val SEALED_CLASS_ERROR_SUFFIX = "Error"
+    const val SEALED_CLASS_UNKNOWN_ERROR = "Unknown"
+
+
+    fun KoClassDeclaration.isNotCQRSClass(): Boolean =
+        !name.contains(CQRS_SUFFIX) && !name.contains(COMMAND_SUFFIX) && !name.contains(QUERY_SUFFIX)
+
+    fun KoClassDeclaration.isApplicationService(): Boolean =
+        isNotCQRSClass() && !name.contains(SEALED_CLASS_ERROR_SUFFIX)
 }

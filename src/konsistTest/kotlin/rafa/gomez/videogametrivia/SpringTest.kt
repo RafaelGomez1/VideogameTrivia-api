@@ -28,6 +28,8 @@ class SpringTest {
             .assertFalse { it.hasAnnotationOf<Autowired>() }
     }
 
+
+
     @Test
     fun `interfaces with 'Repository' annotation should have 'Repository' suffix`() {
         Konsist
