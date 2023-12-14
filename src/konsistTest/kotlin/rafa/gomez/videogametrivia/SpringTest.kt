@@ -11,6 +11,11 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 import org.springframework.web.bind.annotation.RestController
+import rafa.gomez.videogametrivia.SharedConcepts.CONTROLLER_ANNOTATION
+import rafa.gomez.videogametrivia.SharedConcepts.DATABASE_PACKAGE
+import rafa.gomez.videogametrivia.SharedConcepts.PRIMARY_ADAPTER_LAYER
+import rafa.gomez.videogametrivia.SharedConcepts.REPOSITORY_ANNOTATION
+import rafa.gomez.videogametrivia.SharedConcepts.RESPONSE_TYPE
 
 class SpringTest {
 
@@ -29,7 +34,7 @@ class SpringTest {
             .scopeFromProject()
             .interfaces()
             .withAnnotationOf(Repository::class)
-            .assertTrue { it.hasNameEndingWith("Repository") }
+            .assertTrue { it.hasNameEndingWith(REPOSITORY_ANNOTATION) }
     }
 
     @Test
@@ -39,7 +44,7 @@ class SpringTest {
             .classes()
             .withAnnotationOf(RestController::class)
             .assertTrue {
-                it.hasNameEndingWith("Controller")
+                it.hasNameEndingWith(CONTROLLER_ANNOTATION)
             }
     }
 
@@ -49,7 +54,7 @@ class SpringTest {
             .scopeFromProject()
             .classes()
             .withAnnotationOf(RestController::class)
-            .assertTrue { it.resideInPackage("..primaryadapter..") }
+            .assertTrue { it.resideInPackage(PRIMARY_ADAPTER_LAYER) }
     }
 
     @Test
@@ -59,7 +64,7 @@ class SpringTest {
             .classes()
             .withAnnotationOf(RestController::class)
             .functions()
-            .assertTrue { function -> function.hasReturnType { it.hasNameStartingWith("Response<") } }
+            .assertTrue { function -> function.hasReturnType { it.hasNameStartingWith(RESPONSE_TYPE) } }
     }
 
     @Test
@@ -68,6 +73,6 @@ class SpringTest {
             .scopeFromProject()
             .interfaces()
             .withAnnotationOf(Repository::class)
-            .assertTrue { it.resideInPackage("database") }
+            .assertTrue { it.resideInPackage(DATABASE_PACKAGE) }
     }
 }

@@ -6,6 +6,7 @@ import com.lemonappdev.konsist.api.ext.list.primaryConstructors
 import com.lemonappdev.konsist.api.verify.assertFalse
 import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
+import rafa.gomez.videogametrivia.SharedConcepts.VALUE_CLASS_PROPERTY_NAME
 
 class CodeStyleTest {
 
@@ -31,7 +32,7 @@ class CodeStyleTest {
             .classes()
             .withValueModifier()
             .primaryConstructors
-            .assertTrue { it.hasParameterWithName("value") }
+            .assertTrue { it.hasParameterWithName(VALUE_CLASS_PROPERTY_NAME) }
     }
 
     @Test
