@@ -7,6 +7,7 @@ plugins {
     id("com.diffplug.spotless") version "6.18.0"
     kotlin("plugin.spring") version "1.9.0"
     id("java-test-fixtures")
+    `jvm-test-suite`
 }
 
 group = "rafa.gomez"
@@ -21,17 +22,17 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-//    implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
-//    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
-//    implementation("org.springframework.boot:spring-boot-starter-security")
-//    implementation("org.springframework.boot:spring-boot-starter-web")
 
+    // Kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
 
@@ -51,22 +52,30 @@ dependencies {
     // Event Bus
     implementation("org.axonframework:axon-messaging:4.9.0")
 
+    // Testing
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.projectreactor:reactor-test")
-    testImplementation("org.springframework.security:spring-security-test")
 
     // Coroutines Testing
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-
-    // Konsist
-    testImplementation("com.lemonappdev:konsist:0.13.0")
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict", "-Xcontext-receivers")
         jvmTarget = "17"
+    }
+}
+
+testing {
+    suites {
+        register("konsistTest", JvmTestSuite::class) {
+            dependencies {
+                implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+                implementation("com.lemonappdev:konsist:0.13.0")
+                implementation("org.springframework.boot:spring-boot-starter-web")
+            }
+        }
     }
 }
 
@@ -81,4 +90,8 @@ spotless {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named("check") {
+    dependsOn(testing.suites.named("konsistTest"))
 }
