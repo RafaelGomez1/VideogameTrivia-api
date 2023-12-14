@@ -17,8 +17,8 @@ object SharedConcepts {
     const val DATABASE_PACKAGE = "database"
 
     // Spring Concepts
-    const val CONTROLLER_ANNOTATION = "Controller"
-    const val REPOSITORY_ANNOTATION = "Repository"
+    const val CONTROLLER_SUFFIX = "Controller"
+    const val REPOSITORY_SUFFIX = "Repository"
 
     // Data type concepts
     const val EITHER_TYPE = "Either<"

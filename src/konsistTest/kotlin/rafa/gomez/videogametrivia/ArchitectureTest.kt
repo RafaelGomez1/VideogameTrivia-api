@@ -5,21 +5,26 @@ import com.lemonappdev.konsist.api.architecture.KoArchitectureCreator.assertArch
 import com.lemonappdev.konsist.api.architecture.Layer
 import com.lemonappdev.konsist.api.declaration.KoClassDeclaration
 import com.lemonappdev.konsist.api.ext.list.modifierprovider.withSealedModifier
+import com.lemonappdev.konsist.api.ext.provider.hasAnnotationOf
+import com.lemonappdev.konsist.api.verify.assertFalse
 import com.lemonappdev.konsist.api.verify.assertTrue
 import java.util.stream.Stream
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
+import org.springframework.beans.factory.annotation.Autowired
 import rafa.gomez.videogametrivia.SharedConcepts.APPLICATION_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.APPLICATION_SERVICE_METHOD_NAME
 import rafa.gomez.videogametrivia.SharedConcepts.COMMAND_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.CQRS_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.DOMAIN_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.EITHER_TYPE
+import rafa.gomez.videogametrivia.SharedConcepts.PRIMARY_ADAPTER_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.QUERY_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.SEALED_CLASS_ERROR_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.SEALED_CLASS_UNKNOWN_ERROR
+import rafa.gomez.videogametrivia.SharedConcepts.SECONDARY_ADAPTER_LAYER
 import rafa.gomez.videogametrivia.SharedConcepts.isApplicationService
 
 class ArchitectureTest {
@@ -106,5 +111,4 @@ class ArchitectureTest {
                 primaryAdapter.dependsOn(domain, application)
             }
     }
-
 }

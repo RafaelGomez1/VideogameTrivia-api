@@ -13,7 +13,6 @@ import rafa.gomez.videogametrivia.question.domain.Difficulty.Undetermined
 import rafa.gomez.videogametrivia.question.secondaryadapter.database.QuestionDocument
 import rafa.gomez.videogametrivia.question.secondaryadapter.database.toDocument
 
-@Repository
 interface JpaChallengeRepository : MongoRepository<ChallengeDocument, String> {
     fun findAllByCategory(category: String): List<ChallengeDocument>
     fun findAllByCategoryAndDifficulty(category: String, difficulty: String): List<ChallengeDocument>
