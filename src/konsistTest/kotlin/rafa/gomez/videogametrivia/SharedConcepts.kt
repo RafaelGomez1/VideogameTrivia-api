@@ -30,7 +30,6 @@ object SharedConcepts {
     const val SEALED_CLASS_ERROR_SUFFIX = "Error"
     const val SEALED_CLASS_UNKNOWN_ERROR = "Unknown"
 
-
     fun KoClassDeclaration.isNotCQRSClass(): Boolean =
         !name.contains(CQRS_SUFFIX) && !name.contains(COMMAND_SUFFIX) && !name.contains(QUERY_SUFFIX)
 

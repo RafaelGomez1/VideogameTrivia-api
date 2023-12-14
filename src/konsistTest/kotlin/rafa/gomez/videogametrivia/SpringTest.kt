@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController
 import rafa.gomez.videogametrivia.SharedConcepts.CONTROLLER_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.DATABASE_PACKAGE
 import rafa.gomez.videogametrivia.SharedConcepts.PRIMARY_ADAPTER_LAYER
-import rafa.gomez.videogametrivia.SharedConcepts.REPOSITORY_SUFFIX
 import rafa.gomez.videogametrivia.SharedConcepts.RESPONSE_TYPE
 
 class SpringTest {

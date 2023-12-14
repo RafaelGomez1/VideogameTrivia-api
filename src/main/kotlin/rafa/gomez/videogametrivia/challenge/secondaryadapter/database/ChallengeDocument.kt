@@ -3,7 +3,6 @@ package rafa.gomez.videogametrivia.challenge.secondaryadapter.database
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.repository.MongoRepository
-import org.springframework.stereotype.Repository
 import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.challenge.domain.Category.NO_CATEGORY
 import rafa.gomez.videogametrivia.challenge.domain.Challenge
