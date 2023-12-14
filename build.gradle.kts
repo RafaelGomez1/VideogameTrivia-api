@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.0"
     id("java-test-fixtures")
     `jvm-test-suite`
+    jacoco
 }
 
 group = "rafa.gomez"
@@ -94,4 +95,13 @@ tasks.withType<Test> {
 
 tasks.named("check") {
     dependsOn(testing.suites.named("konsistTest"))
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    dependsOn(tasks.test)
 }
