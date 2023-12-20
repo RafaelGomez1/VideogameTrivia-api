@@ -3,7 +3,6 @@ package rafa.gomez.videogametrivia.shared.fakes
 import rafa.gomez.videogametrivia.shared.event.bus.DomainEvent
 import rafa.gomez.videogametrivia.shared.event.bus.DomainEventPublisher
 
-
 object FakeDomainEventPublisher : DomainEventPublisher {
     private val publishedEvents = mutableListOf<DomainEvent>()
     private val errors = mutableListOf<Throwable>()

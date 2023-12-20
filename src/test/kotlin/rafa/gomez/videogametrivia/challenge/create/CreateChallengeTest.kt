@@ -1,6 +1,3 @@
 package rafa.gomez.videogametrivia.challenge.create
 
-class CreateChallengeTest {
-
-
-}
+class CreateChallengeTest

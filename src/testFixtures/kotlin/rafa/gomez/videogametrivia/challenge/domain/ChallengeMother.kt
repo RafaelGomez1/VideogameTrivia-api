@@ -17,4 +17,3 @@ object ChallengeMother {
 object ChallengeIdMother {
     fun random(value: UUID = UUID.randomUUID()): ChallengeId = ChallengeId(value)
 }
-

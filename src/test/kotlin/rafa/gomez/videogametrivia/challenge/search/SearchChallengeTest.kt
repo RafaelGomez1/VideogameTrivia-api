@@ -1,29 +1,23 @@
 package rafa.gomez.videogametrivia.challenge.search
 
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.HttpStatus.OK
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeQueryHandler
-import rafa.gomez.videogametrivia.challenge.domain.Category
 import rafa.gomez.videogametrivia.challenge.domain.Category.LORE_AND_STORYLINES
 import rafa.gomez.videogametrivia.challenge.domain.Category.VIDEOGAME_HISTORY
 import rafa.gomez.videogametrivia.challenge.domain.ChallengeMother
 import rafa.gomez.videogametrivia.challenge.fakes.FakeChallengeRepository
 import rafa.gomez.videogametrivia.challenge.primaryadapter.ChallengeDTOMother
-import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors
 import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.INVALID_CATEGORY_ERROR
 import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.INVALID_DIFFICULTY_ERROR
 import rafa.gomez.videogametrivia.challenge.primaryadapter.search.ChallengeDTO
 import rafa.gomez.videogametrivia.challenge.primaryadapter.search.SearchChallengeController
-import rafa.gomez.videogametrivia.question.domain.Difficulty
 import rafa.gomez.videogametrivia.question.domain.Difficulty.Easy
 import rafa.gomez.videogametrivia.question.domain.Difficulty.Hard
-import rafa.gomez.videogametrivia.question.domain.Difficulty.Medium
 import rafa.gomez.videogametrivia.shared.error.ServerError
 
 class SearchChallengeTest {

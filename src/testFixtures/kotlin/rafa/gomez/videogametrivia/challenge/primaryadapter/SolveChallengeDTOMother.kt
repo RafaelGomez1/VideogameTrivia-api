@@ -1,6 +1,5 @@
 package rafa.gomez.videogametrivia.challenge.primaryadapter
 
-import java.util.UUID
 import rafa.gomez.videogametrivia.challenge.domain.Challenge
 import rafa.gomez.videogametrivia.challenge.primaryadapter.solve.SolveChallengeDTO
 import rafa.gomez.videogametrivia.shared.UserId

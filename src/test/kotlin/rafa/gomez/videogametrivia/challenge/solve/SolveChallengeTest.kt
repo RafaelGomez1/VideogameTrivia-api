@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.http.HttpStatus.OK
@@ -16,11 +15,9 @@ import rafa.gomez.videogametrivia.challenge.application.solve.SolveChallengeComm
 import rafa.gomez.videogametrivia.challenge.domain.ChallengeSolvedEventMother
 import rafa.gomez.videogametrivia.challenge.fakes.FakeChallengeRepository
 import rafa.gomez.videogametrivia.challenge.primaryadapter.SolveChallengeDTOMother
-import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors
 import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.CHALLENGE_FAILED_ERROR
 import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.CHALLENGE_NOT_FOUND_ERROR
 import rafa.gomez.videogametrivia.challenge.primaryadapter.solve.SolveChallengeController
-import rafa.gomez.videogametrivia.challenge.primaryadapter.solve.SolveChallengeDTO
 import rafa.gomez.videogametrivia.shared.error.ServerError
 import rafa.gomez.videogametrivia.shared.fakes.FakeDomainEventPublisher
 import rafa.gomez.videogametrivia.user.UserIdMother
@@ -54,7 +51,7 @@ class SolveChallengeTest {
         assertEquals(null, result.body)
 
         assertTrue { repository.contains(challenge) }
-        assertTrue { publisher.published(challengedSolvedEvent)}
+        assertTrue { publisher.published(challengedSolvedEvent) }
     }
 
     @Test
