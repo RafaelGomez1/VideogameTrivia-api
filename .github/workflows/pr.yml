@@ -9,7 +9,7 @@ jobs:
 
   static_code_analysis:
     name: Spotless
-    runs-on: [ self-hosted, standard, default ]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
