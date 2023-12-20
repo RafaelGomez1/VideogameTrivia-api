@@ -19,7 +19,7 @@ class SolveChallengeCommandHandler(
         solveChallenge(
             id = ChallengeId.fromString(command.id),
             answers = command.answers.map { Answer(it) },
-            userId = UserId.fromString(command.id)
+            userId = UserId.fromString(command.userId)
         )
     }
 }
