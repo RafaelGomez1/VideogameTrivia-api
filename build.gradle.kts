@@ -97,7 +97,7 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.named("check") {
+tasks.named("spotlessCheck") {
     dependsOn(testing.suites.named("konsistTest"))
 }
 
