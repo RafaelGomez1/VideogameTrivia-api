@@ -26,6 +26,25 @@ jobs:
           arguments: |
             spotlessCheck
 
+  architecture_analysis:
+    name: Konsist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '17'
+
+      - name: Run konsistTest gradle task
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: |
+            konsistTest
+
   unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest

@@ -101,6 +101,10 @@ tasks.named("spotlessCheck") {
     dependsOn(testing.suites.named("konsistTest"))
 }
 
+tasks.register("konsistCheck") {
+    dependsOn(testing.suites.named("konsistTest"))
+}
+
 tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
