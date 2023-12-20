@@ -10,6 +10,8 @@ class ChallengeSearcher(private val repository: ChallengeRepository) {
 
     suspend operator fun invoke(category: Category, difficulty: Difficulty): List<Challenge> =
         repository.search(ByCategoryAndDifficulty(category, difficulty))
+
+    suspend fun invoke2(): Nothing = TODO()
 }
 
 sealed interface SearchChallengeError {
