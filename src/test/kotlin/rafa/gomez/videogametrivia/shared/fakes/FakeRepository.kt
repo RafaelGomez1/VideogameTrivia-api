@@ -12,14 +12,14 @@ interface FakeRepository<ID, T> {
     }
 
     fun contains(resource: T): Boolean = resource in elements.values
-    fun resourceExistsById(id: ID): Boolean = id in elements.keys
+    fun contains(vararg resource: T): Boolean = resource.all { it in elements.values }
+    fun containsBy(id: ID): Boolean = id in elements.keys
 
-    fun <Response> failIfConfiguredOrElse(block: () -> Response) {
+    fun <Response> failIfConfiguredOrElse(block: () -> Response): Response =
         if (errors.isNotEmpty()) throw errors.removeFirst()
         else block()
-    }
 
-    fun MutableMap<ID, T>.saveOrUpdate(value: T, id: ID) =
+    fun MutableMap<ID, T>.saveOrUpdate(id: ID, value: T) =
         if (id in elements.keys)
             elements.replace(id, value)
         else elements.put(id, value)

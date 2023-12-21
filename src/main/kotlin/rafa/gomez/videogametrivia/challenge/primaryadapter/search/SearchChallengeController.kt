@@ -12,8 +12,11 @@ import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeEr
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeError.InvalidDifficulty
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeQuery
 import rafa.gomez.videogametrivia.challenge.application.search.SearchChallengeQueryHandler
+import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.INVALID_CATEGORY_ERROR
+import rafa.gomez.videogametrivia.challenge.primaryadapter.error.ChallengeServerErrors.INVALID_DIFFICULTY_ERROR
 import rafa.gomez.videogametrivia.shared.BaseController
 import rafa.gomez.videogametrivia.shared.response.Response
+import rafa.gomez.videogametrivia.shared.response.withBody
 
 @RestController
 class SearchChallengeController(private val handler: SearchChallengeQueryHandler) : BaseController() {
@@ -32,7 +35,7 @@ class SearchChallengeController(private val handler: SearchChallengeQueryHandler
 
     private fun SearchChallengeError.toServerResponse(): Response<*> =
         when (this) {
-            InvalidCategory -> Response.status(BAD_REQUEST).body("Invalid Category")
-            InvalidDifficulty -> Response.status(BAD_REQUEST).body("Invalid Difficulty")
+            InvalidCategory -> Response.status(BAD_REQUEST).withBody(INVALID_CATEGORY_ERROR)
+            InvalidDifficulty -> Response.status(BAD_REQUEST).withBody(INVALID_DIFFICULTY_ERROR)
         }
 }

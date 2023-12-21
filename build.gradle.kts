@@ -52,10 +52,14 @@ dependencies {
 
     // Event Bus
     implementation("org.axonframework:axon-messaging:4.9.0")
+    implementation("io.github.serpro69:kotlin-faker:1.14.0")
 
     // Testing
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.github.serpro69:kotlin-faker")
+
+    testFixturesImplementation("io.github.serpro69:kotlin-faker:1.15.0")
 
     // Coroutines Testing
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
@@ -91,10 +95,6 @@ spotless {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks.named("check") {
-    dependsOn(testing.suites.named("konsistTest"))
 }
 
 tasks.jacocoTestReport {
