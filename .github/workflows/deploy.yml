@@ -22,7 +22,7 @@ jobs:
 
       - name: Build and deploy image
         run: >
-          ./gradlew jib --image=rafagomezp/videograme-trivia
+          ./gradlew jib --image=rafagomezp/videogame-trivia
           -Djib.to.auth.username=${{ secrets.DOCKERHUB_USER }}
           -Djib.to.auth.password=${{ secrets.DOCKERHUB_PWD }}
 
@@ -41,9 +41,9 @@ jobs:
           password: ${{ secrets.DIGITALOCEAN_DROPLET_PASSWORD }}
           debug: true
           script: |
-            container_id=$(docker ps -aqf "ancestor=rafagomezp/videograme-trivia")
+            container_id=$(docker ps -aqf "ancestor=rafagomezp/videogame-trivia")
             echo "Container ID: $container_id"
             docker stop $container_id
             docker rm $container_id
-            docker pull rafagomezp/videograme-trivia
-            docker run -d -p 8080:8080 rafagomezp/videograme-trivia
+            docker pull rafagomezp/videogame-trivia
+            docker run -d -p 8080:8080 rafagomezp/videogame-trivia
