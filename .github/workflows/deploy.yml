@@ -25,6 +25,7 @@ jobs:
           ./gradlew jib --image=rafagomezp/videogame-trivia
           -Djib.to.auth.username=${{ secrets.DOCKERHUB_USER }}
           -Djib.to.auth.password=${{ secrets.DOCKERHUB_PWD }}
+          -Djib.to.image.platform=java17
 
   deploy_to_digital_ocean:
     runs-on: ubuntu-latest
