@@ -12,6 +12,7 @@ object ChallengeDTOMother {
     fun fromChallenge(challenge: Challenge): ChallengeDTO =
         with(challenge) {
             ChallengeDTO(
+                challengeId = id.toString(),
                 category = category.name,
                 questions = questions.map { question ->
                     QuestionDTO(

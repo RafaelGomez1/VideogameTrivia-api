@@ -3,6 +3,7 @@ package rafa.gomez.videogametrivia.challenge.primaryadapter.search
 import rafa.gomez.videogametrivia.challenge.domain.Challenge
 
 data class ChallengeDTO(
+    val challengeId: String,
     val category: String,
     val questions: List<QuestionDTO>,
     val difficulty: String
@@ -21,6 +22,7 @@ internal fun List<Challenge>.toDto(): List<ChallengeDTO> = map { it.toDto() }
 
 internal fun Challenge.toDto(): ChallengeDTO =
     ChallengeDTO(
+        challengeId = id.toString(),
         category = category.name,
         questions = questions.map { question ->
             QuestionDTO(
