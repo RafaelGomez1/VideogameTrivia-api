@@ -3,10 +3,10 @@
     request.variables.set("CATEGORY", "LORE_AND_STORYLINES")
     request.variables.set("DIFFICULTY", "HARD")
 %}
-GET {{protocol}}{{host}}/challenges?category={{CATEGORY}}&difficulty={{DIFFICULTY}}
+#GET {{protocol}}{{host}}/challenges?category={{CATEGORY}}&difficulty={{DIFFICULTY}}
+GET http://64.226.124.118:8086/challenges?category={{CATEGORY}}&difficulty={{DIFFICULTY}}
 Accept: application/json
 ###
-
 
 < {%
     request.variables.set("CHALLENGE_ID", "f2579748-24fd-4763-9cd5-24a6e462995b")

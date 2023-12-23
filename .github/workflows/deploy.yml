@@ -47,4 +47,4 @@ jobs:
             docker stop $container_id
             docker rm $container_id
             docker pull rafagomezp/videogame-trivia
-            docker run -d -p 8080:8080 rafagomezp/videogame-trivia
+            docker run -d -p 8086:8086 rafagomezp/videogame-trivia
