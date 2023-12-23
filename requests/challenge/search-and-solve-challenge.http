@@ -15,7 +15,7 @@ POST {{protocol}}{{host}}/challenges/{{CHALLENGE_ID}}/solve
 Content-Type: application/json
 
 {
-  "userId": "f2579748-24fd-4763-9cd5-24a6e462995b",
+  "userId": "f2579748-24fd-4763-9cd5-24a6e462997b",
   "answers": [
     "Fender",
     "Blades of Chaos",
